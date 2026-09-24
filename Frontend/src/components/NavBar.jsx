@@ -25,13 +25,13 @@ const NavBar = () => {
           {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8"> 
 
-            <ScrollLink to="home" 
+            <RouterLink to="/" 
               smooth={true}
               duration={500}
               className="text-gray-300 hover:text-sky-400 font-medium transition-colors duration-300 cursor-pointer"
               >
                 Home
-            </ScrollLink>
+            </RouterLink>
 
             {/* About */}
             <ScrollLink 
@@ -81,7 +81,7 @@ const NavBar = () => {
             >
                 Admin
             </RouterLink>
-            
+
             {/* Explore */}
             <RouterLink 
                 to="/explore"

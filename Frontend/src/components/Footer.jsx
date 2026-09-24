@@ -70,20 +70,20 @@ const Footer = () => {
               <h4 className="text-white font-semibold mb-4">Legal</h4>
               <ul className="space-y-2">
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/privacy"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
+                  <Link
+                    to="/term"
                     className="text-gray-400 hover:text-white transition-colors"
                   >
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <ScrollLink

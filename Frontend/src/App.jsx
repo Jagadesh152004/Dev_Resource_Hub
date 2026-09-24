@@ -5,6 +5,8 @@ import AdminDash from "./YoutubeAdminPage/AdminDash"
 import AddYoutube from "./YoutubeAdminPage/AddYoutube"
 import EditYoutube from "./YoutubeAdminPage/EditYoutube"
 import Explore from "./pages/Explore"
+import Terms from "./pages/Terms"
+import PrivacyPolicy from "./pages/PrivacyPolicy"
 
 const App = () => {
   return (
@@ -21,11 +23,11 @@ const App = () => {
 
       <Route path="/admin/youtube/edit/:id" element={<EditYoutube/>} />
 
-      {/* <Route path="/about" element={<About />} />
-
-      <Route path="/contact" element={<Contact/>}/> */}
-
       <Route path="/explore" element={<Explore/>} />
+
+      <Route path="/term" element={<Terms />} />
+
+      <Route path="/privacy" element={<PrivacyPolicy />} />   
 
     </Routes>
     
