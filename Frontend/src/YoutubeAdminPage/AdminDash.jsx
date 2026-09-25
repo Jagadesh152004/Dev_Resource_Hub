@@ -135,10 +135,10 @@ const AdminDash = () => {
             onChange={ (e) => setSelectedLanguage(e.target.value) }
             className="w-40 text-gray-400 text-sm px-3 py-1 border border-cyan-400 rounded-2xl focus:ring-2 focus:ring-sky-500 transition-all outline-none"
             >
-              <option value="All" className="bg-black text-white">All</option>
-              <option value="English" className="bg-black text-white ">English</option>
-              <option value="Tamil" className="bg-black text-white ">Tamil</option>
-              <option value="Hindi" className="bg-black text-white ">Hindi</option>
+              <option value="All" className="bg-gray-900 text-white">All</option>
+              <option value="English" className="bg-gray-900 text-white ">English</option>
+              <option value="Tamil" className="bg-gray-900 text-white ">Tamil</option>
+              <option value="Hindi" className="bg-gray-900 text-white ">Hindi</option>
 
           </select>
           </div>
