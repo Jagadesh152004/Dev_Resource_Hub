@@ -7,9 +7,25 @@ const AddYoutube = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch("http://localhost:8080/course/technology")
-            .then((response) => response.json())
-            .then((data) => setTechnologies(data));
+
+        async function fetchTech(){
+            try{
+        
+                const response = await fetch("http://localhost:8080/course/technology")
+            
+                if(response.ok){
+                    const data = await response.json();
+                    setTechnologies(data);;
+                }else{
+                    throw new Error("error due to " + response.status);
+                }
+                
+            }catch(error){
+                alert(error.message);
+            }
+        }
+
+        fetchTech();
     }, []);
 
     // handle post method
@@ -162,7 +178,7 @@ const AddYoutube = () => {
                                     <input
                                         type="text"
                                         id="language"
-                                        name="language"
+                                        name="Language"
                                         placeholder="Enter language"
                                         className="w-full bg-gray-900 border border-gray-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-sky-500 transition-all outline-none"
                                         required

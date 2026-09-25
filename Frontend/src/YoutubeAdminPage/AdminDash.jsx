@@ -12,14 +12,31 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const AdminDash = () => {
-  
   const navigate = useNavigate();
   const [resource, setResource] = useState([]);
+  const [userSearch, setSearch] = useState("");
+  const [selectedLanguage,setSelectedLanguage] = useState("All");
 
   useEffect(() => {
-    fetch("http://localhost:8080/resource/youtube")
-      .then((response) => response.json())
-      .then((data) => setResource(data));
+
+    async function fetchResources(){
+
+      try{
+      const response = await fetch("http://localhost:8080/resource/youtube")
+
+      if(response.ok){
+        const data = await response.json();
+        setResource(data);
+      }else{
+        throw new Error("Error occur due to " + response.status);
+      }
+
+    }catch(error){
+      alert(error.message);
+    }
+
+  }
+    fetchResources();
   }, []);
 
   const formatViews = (views) => {
@@ -45,12 +62,10 @@ const AdminDash = () => {
   };
 
   const handleDelete = (id) => {
-
     fetch(`http://localhost:8080/resource/youtube/${id}`, {
       method: "DELETE",
     })
       .then((response) => {
-
         if (!response.ok) {
           throw new Error("Failed to delete resource");
         }
@@ -60,10 +75,21 @@ const AdminDash = () => {
       .catch((error) => {
         console.error(error);
       });
-
   };
 
+  // filter the resources by search and language
+
+  const filterData = resource.filter( (data) => {
+
+   const matchTechnology = data.technology?.name?.toLowerCase().includes(userSearch.toLowerCase());
+   const matchLanguage = selectedLanguage === "All" || data.Language === selectedLanguage;
+  
+   return matchTechnology && matchLanguage;
+
+  })
+
   return (
+
     <div className="w-full h-screen overflow-hidden bg-linear-to-r from-gray-950 to-gray-900">
       <div className="flex h-screen">
         <HorizontalNavbar />
@@ -83,10 +109,46 @@ const AdminDash = () => {
             </p>
           </div>
 
+{/* Search and Select filter */}
+
+      <div className="ml-5 mt-10 flex justify-start items-center gap-2 w-3xl">
+          {/* Search */}
+          <div className="flex justify-center items-center gap-2 w-80 p-2">
+            <label htmlFor="Search" className="text-white font-mono">
+              Search :
+            </label>
+            <input
+              id="search"
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="search by technology..."
+              className="w-52 text-white text-sm px-3 py-1 border border-cyan-400 rounded-2xl focus:ring-2 focus:ring-sky-500 transition-all outline-none"
+            />
+          </div>
+
+          {/* select by language */}
+          <div className="flex justify-start items-center gap-2 w-96 p-2">
+            <label htmlFor="language" className="text-white font-mono">Select Language : </label>
+          <select 
+            id="language"
+            value={selectedLanguage}
+            onChange={ (e) => setSelectedLanguage(e.target.value) }
+            className="w-40 text-gray-400 text-sm px-3 py-1 border border-cyan-400 rounded-2xl focus:ring-2 focus:ring-sky-500 transition-all outline-none"
+            >
+              <option value="All" className="bg-black text-white">All</option>
+              <option value="English" className="bg-black text-white ">English</option>
+              <option value="Tamil" className="bg-black text-white ">Tamil</option>
+              <option value="Hindi" className="bg-black text-white ">Hindi</option>
+
+          </select>
+          </div>
+      </div>
+
+
           {/* List from Database */}
           <div className="mt-10 flex-1 overflow-y-auto custom-scrollbar">
             <div className="flex flex-col items-center gap-5 p-5">
-              {resource.map((item) => (
+              {filterData.map((item) => (
                 <div
                   key={item.id}
                   className="border border-sky-400 rounded-t-3xl rounded-b-3xl flex flex-col bg-linear-to-r from-blue-800 to-indigo-900"
@@ -96,7 +158,7 @@ const AdminDash = () => {
                     height="100"
                     src={item.videoUrl}
                     title={item.title}
-                    allowfullscreen
+                    allowFullScreen
                     className="rounded-t-3xl object-cover"
                   ></iframe>
 
@@ -117,7 +179,7 @@ const AdminDash = () => {
 
                       <div className="flex gap-1">
                         <Eye className="text-white" />
-                        <span className="text-zinc-950">
+                        <span className="text-zinc-300">
                           {formatViews(item.views)}
                         </span>
                       </div>
