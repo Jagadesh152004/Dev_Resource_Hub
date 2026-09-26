@@ -92,11 +92,9 @@ const Explore = () => {
   // };
 
   return (
-
     <div className="flex h-screen overflow-hidden bg-gray-950 text-gray-300 font-sans selection:bg-sky-500/30 selection:text-sky-200">
       {/* LEFT SIDEBAR (Desktop) / TOP NAV (Mobile) */}
 
-      
       <aside className="w-full md:w-64 md:shrink-0 border-b md:border-b-0 md:border-r border-white/10 bg-gray-900/50 backdrop-blur-xl flex flex-col absolute md:relative z-20 h-auto md:h-screen">
         {/* Logo Area */}
         <div className="h-16 md:h-20 flex items-center px-6 border-b border-white/5">
@@ -141,7 +139,6 @@ const Explore = () => {
             <span>Coding Platform</span>
           </a>
         </nav>
-        
       </aside>
 
       {/* MAIN CONTENT AREA */}
@@ -214,7 +211,7 @@ const Explore = () => {
         </header>
 
         {/* Scrollable Content Grid */}
-        <div className="flex-1 overflow-y-auto p-6 scroll-smooth">
+        <div className="flex-1 overflow-y-auto p-6 scroll-smooth custom-scrollbar">
           <div className="max-w-7xl mx-auto">
             {filteredResources.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-20 text-center">
@@ -287,15 +284,13 @@ const Explore = () => {
                       </div>
                     </div>
 
-                    <button
-                      onClick={() =>
-                        alert(`Navigating to /resources/${resource.id}`)
-                      }
+                    <Link
+                      to={`/youtube/resource/${resource.id}`}
                       className="w-full py-3 bg-gray-800 hover:bg-sky-500 text-white rounded-xl font-medium transition-colors border border-gray-700 hover:border-sky-400 flex justify-center items-center gap-2"
                     >
                       View Details
                       <PlayCircle className="w-4 h-4" />
-                    </button>
+                    </Link>
                   </div>
                 ))}
               </div>
@@ -307,7 +302,6 @@ const Explore = () => {
         </div>
       </main>
     </div>
-
   );
 };
 

@@ -7,6 +7,7 @@ import EditYoutube from "./YoutubeAdminPage/EditYoutube"
 import Explore from "./pages/Explore"
 import Terms from "./pages/Terms"
 import PrivacyPolicy from "./pages/PrivacyPolicy"
+import YoutubeDetails from "./pages/YoutubeDetails"
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
       <Route path="/term" element={<Terms />} />
 
       <Route path="/privacy" element={<PrivacyPolicy />} />   
+      
+      <Route path="youtube/resource/:id" element={<YoutubeDetails />} />
+
 
     </Routes>
     

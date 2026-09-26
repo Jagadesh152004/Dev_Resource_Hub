@@ -2,6 +2,7 @@ import {Home, LayoutDashboard, MonitorPlay, Pencil, Plus} from "lucide-react"
 import { Link } from "react-router-dom"
 
 const HorizontalNavbar = () => {
+  
   return (
     <div className="fixed left-0 top-0 h-screen bg-linear-to-r from-indigo-800 to-violet-900 w-72 flex flex-col">
 
@@ -55,6 +56,16 @@ const HorizontalNavbar = () => {
                   <Home className="w-6 h-6 text-black"/>
                 </div>
                   <span className="w-32 text-left">Home</span>
+            </Link>
+
+            <Link
+              to="/resource"
+              className="flex items-center justify-center gap-4 text-white p-3 rounded-lg hover:bg-white/10 transition duration-500 "
+            >
+                <div className="bg-yellow-300 p-2 rounded-full">
+                  <Home className="w-6 h-6 text-black"/>
+                </div>
+                  <span className="w-32 text-left">View More</span>
             </Link>
 
         </div>
