@@ -86,11 +86,6 @@ const Explore = () => {
     return views;
   };
 
-  // const formatDate = (dateString) => {
-  //   const options = { year: 'numeric', month: 'short', day: 'numeric' };
-  //   return new Date(dateString).toLocaleDateString(undefined, options);
-  // };
-
   return (
     <div className="flex h-screen overflow-hidden bg-gray-950 text-gray-300 font-sans selection:bg-sky-500/30 selection:text-sky-200">
       {/* LEFT SIDEBAR (Desktop) / TOP NAV (Mobile) */}
@@ -197,11 +192,12 @@ const Explore = () => {
                     <option value="All" className="text-gray-500">
                       Language
                     </option>
-                    {language.map((lang) => (
-                      <option key={lang} value={lang}>
-                        {lang}
-                      </option>
-                    ))}
+                    {language.map((lang,index) => (
+                        <option key={index} value={lang}>
+                          {lang}
+                        </option>
+                      ))
+                    }
                   </select>
                   <Filter className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
                 </div>

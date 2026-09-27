@@ -58,16 +58,6 @@ const HorizontalNavbar = () => {
                   <span className="w-32 text-left">Home</span>
             </Link>
 
-            <Link
-              to="/resource"
-              className="flex items-center justify-center gap-4 text-white p-3 rounded-lg hover:bg-white/10 transition duration-500 "
-            >
-                <div className="bg-yellow-300 p-2 rounded-full">
-                  <Home className="w-6 h-6 text-black"/>
-                </div>
-                  <span className="w-32 text-left">View More</span>
-            </Link>
-
         </div>
 
     </div>
