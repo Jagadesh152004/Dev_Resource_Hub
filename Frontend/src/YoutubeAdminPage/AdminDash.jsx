@@ -34,7 +34,7 @@ const AdminDash = () => {
           throw new Error("Error occur due to " + response.status);
         }
       } catch (error) {
-        alert(error.message);
+        console.error(error.message);
       }
     }
     fetchResources();

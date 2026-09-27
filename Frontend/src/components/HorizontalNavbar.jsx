@@ -19,6 +19,16 @@ const HorizontalNavbar = () => {
         <div className="flex flex-col gap-3 p-4 mt-5">
 
             <Link
+              to="/"
+              className="flex items-center justify-center gap-4 text-white p-3 rounded-lg hover:bg-white/10 transition duration-500 "
+            >
+                <div className="bg-yellow-300 p-2 rounded-full">
+                  <Home className="w-6 h-6 text-black"/>
+                </div>
+                  <span className="w-32 text-left">Home</span>
+            </Link>
+            
+            <Link
               to="/admin"
               className="flex items-center justify-center gap-4 text-white p-3 rounded-lg hover:bg-white/10 transition duration-500 "
             >
@@ -48,15 +58,6 @@ const HorizontalNavbar = () => {
                   <span className="w-32 text-left">Edit Resource</span>
             </Link>
 
-            <Link
-              to="/"
-              className="flex items-center justify-center gap-4 text-white p-3 rounded-lg hover:bg-white/10 transition duration-500 "
-            >
-                <div className="bg-yellow-300 p-2 rounded-full">
-                  <Home className="w-6 h-6 text-black"/>
-                </div>
-                  <span className="w-32 text-left">Home</span>
-            </Link>
 
         </div>
 
